@@ -1,0 +1,48 @@
+Rectangle{
+        id: mySplashScreen
+        anchors.fill: parent
+
+        ProgressBar{
+            id: pBar
+            height: 20
+            width: parent.width
+            anchors.bottom: parent.bottom
+            from:0
+            value : pbValue
+            to:30
+        }
+
+        BusyIndicator{
+            anchors.right: parent.right
+            running: (pbValue < pBar.to +1)
+        }
+
+        Button{
+            text: "click me"
+            onClicked: {
+                for(var i = 0 ; i < 15000 ;i++)
+		 {
+                    var comp = mycomp.createObject(mySplashScreen)
+                }
+            }
+        }
+    }
+
+    Timer{
+        id:timer
+        interval: 250
+        running: (pbValue < pBar.to +1)
+        onTriggered: {
+            pbValue += 1;
+        }
+    }
+
+    Component{
+        id:mycomp
+        Rectangle{
+            width: 200
+            height: 200
+            color: "green"
+        }
+    }
+}

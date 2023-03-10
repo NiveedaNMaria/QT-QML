@@ -1,0 +1,44 @@
+FilePicker {
+    anchors.fill: parent
+    showDotAndDotDot: true
+    nameFilters: "*.jpeg"
+    onFileSelected: {
+        console.log("User selects file: " + currentFolder() + "/" +fileName)
+    }
+}
+
+Rectangle { 
+    id: button
+    x: 12; y: 12
+    width: 116; height: 26
+    color: "lightsteelblue"
+    border.color: "slategrey"
+    Text {
+        anchors.horizontalCenter: parent.horizontalCenter
+        text: "Play"
+    }
+    MouseArea {
+        anchors.fill: parent
+        onClicked: {
+            status.text = "Playing!"
+        }
+    }
+}
+
+Rectangle { 
+    id: button
+    x: 12; y: 12
+    width: 116; height: 26
+    color: "lightsteelblue"
+    border.color: "slategrey"
+    Text {
+        anchors.horizontalCenter: parent.horizontalCenter
+        text: "Pause"
+    }
+    MouseArea {
+        anchors.fill: parent
+        onClicked: {
+            status.text = "Paused!"
+        }
+    }
+}
